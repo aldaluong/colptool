@@ -12,5 +12,6 @@
 #import "CTMacros.h"
 #import "CTSharedServiceLocator.h"
 #import "CTCamera.h"
+#import "CTFilterCamera.h"
 
 #endif

@@ -13,6 +13,7 @@ static CTSharedServiceLocator *sharedServiceLocator = nil;
 
 @implementation CTSharedServiceLocator
 @synthesize camera = _camera;
+@synthesize filterCamera = _filterCamera;
 
 +(instancetype)sharedServiceLocator
 {
@@ -40,4 +41,12 @@ static CTSharedServiceLocator *sharedServiceLocator = nil;
     return _camera;
 }
 
+- (CTFilterCamera *)filterCamera
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        self->_filterCamera = [[CTFilterCamera alloc] init];
+    });
+    return _filterCamera;
+}
 @end

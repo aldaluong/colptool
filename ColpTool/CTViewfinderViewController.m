@@ -10,7 +10,7 @@
 #import "CTViewfinderView.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "CTImports.h"
-//#import "GPUImage.h"
+#import "GPUImage.h"
 
 @interface CTViewfinderViewController ()
 
@@ -25,9 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
- 
-    //[self setupCamera];
-    //[self presentViewController:self.cameraPicker animated:NO completion:nil];
+    
     self.camera = [CTSharedServiceLocator sharedServiceLocator].camera;
     self.cameraViewOverlayView = [[CTViewfinderView alloc] initWithFrame:self.view.bounds];
     
@@ -49,9 +47,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self presentViewController:self.camera.cameraPicker animated:YES completion:nil];
-    self.camera.cameraPicker.cameraOverlayView = self.cameraViewOverlayView;
-    //[self.camera setupGreenFilterCamera];
+    //[self presentViewController:self.camera.cameraPicker animated:YES completion:nil];
+    //self.camera.cameraPicker.cameraOverlayView = self.cameraViewOverlayView;
+    [self setupGreenFilterCamera];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,6 +69,23 @@
 - (void)toggleGrid {
 
 }*/
+
+- (void)setupGreenFilterCamera
+{
+    GPUImageVideoCamera *videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
+    
+    //GPUImageFilter *customFilter = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"CustomShader"];
+    GPUImageFilter *filter = [[GPUImageColorInvertFilter alloc] init];
+    GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:CGRectMake(50.0, 50.0, 200, 200)];
+    
+    // Add the view somewhere so it's visible
+    [self.view addSubview:filteredVideoView];
+    
+    [videoCamera addTarget:filter];
+    [filter addTarget:filteredVideoView];
+    
+    [videoCamera startCameraCapture];
+}
 
 /*
 #pragma mark - Navigation

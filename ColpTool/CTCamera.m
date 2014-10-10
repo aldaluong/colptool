@@ -65,23 +65,5 @@
 {
     self.cameraPicker.cameraFlashMode = flashMode;
 }
-/*
- - (void)setupGreenFilterCamera
-{
-    GPUImageVideoCamera *videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
-
-    //GPUImageFilter *customFilter = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"CustomShader"];
-    GPUImageFilter *filter = [[GPUImageColorInvertFilter alloc] init];
-    GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:CGRectMake(50.0, 50.0, 200, 200)];
-
-    // Add the view somewhere so it's visible
-    [self.view addSubview:filteredVideoView];
-
-    [videoCamera addTarget:filter];
-    [filter addTarget:filteredVideoView];
-
-    [videoCamera startCameraCapture];
-}
- */
 
 @end
