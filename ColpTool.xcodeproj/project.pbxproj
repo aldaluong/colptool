@@ -88,6 +88,7 @@
 				6D1C41CB19E667F100F8600C /* ColpToolTests */,
 				6D1C41B019E667F100F8600C /* Products */,
 				6D1C41DE19E671AE00F8600C /* Resources */,
+				6DFDA2C019E7854700F69237 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,6 +169,14 @@
 				6D1C41E419E6768000F8600C /* ClockGrid.png */,
 			);
 			name = Asset;
+			sourceTree = "<group>";
+		};
+		6DFDA2C019E7854700F69237 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			path = ColpTool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

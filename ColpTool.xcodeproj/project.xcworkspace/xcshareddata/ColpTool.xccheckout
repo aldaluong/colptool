@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>BA3572A8-7B49-4335-A621-91FCAE100242</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ColpTool</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>FBF02DE35829C45C9FA0E6D96AA6CB4B24FA4A4D</key>
+		<string>https://github.com/aldaluong/colptool.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ColpTool.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>FBF02DE35829C45C9FA0E6D96AA6CB4B24FA4A4D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/aldaluong/colptool.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>FBF02DE35829C45C9FA0E6D96AA6CB4B24FA4A4D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>FBF02DE35829C45C9FA0E6D96AA6CB4B24FA4A4D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>colptool</string>
+		</dict>
+	</array>
+</dict>
+</plist>

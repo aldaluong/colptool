@@ -11,7 +11,10 @@
 
 @interface CTCamera : NSObject<UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, strong) UIImagePickerController *cameraPicker;
+@property (nonatomic, assign) UIImagePickerControllerCameraFlashMode flashMode;
 -(BOOL)flashAvailable;
 -(BOOL)flashOn;
+-(void)setupGreenFilterCamera;
+-(UIImagePickerControllerCameraFlashMode)flashMode;
 
 @end

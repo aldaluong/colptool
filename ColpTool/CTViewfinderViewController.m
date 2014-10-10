@@ -51,6 +51,7 @@
 {
     [self presentViewController:self.camera.cameraPicker animated:YES completion:nil];
     self.camera.cameraPicker.cameraOverlayView = self.cameraViewOverlayView;
+    //[self.camera setupGreenFilterCamera];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,10 +60,10 @@
 }
 
 - (void)toggleFlashMode {
-    if (self.camera.cameraPicker.cameraFlashMode == UIImagePickerControllerCameraFlashModeOff) {
-        self.camera.cameraPicker.cameraFlashMode = UIImagePickerControllerCameraFlashModeOn;
+    if (self.camera.flashMode == UIImagePickerControllerCameraFlashModeOff) {
+        self.camera.flashMode = UIImagePickerControllerCameraFlashModeOn;
     } else {
-        self.camera.cameraPicker.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff;
+        self.camera.flashMode = UIImagePickerControllerCameraFlashModeOff;
     }
 }
 
@@ -78,24 +79,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
-/*
-- (void)setupGreenFilterCamera
-{
-    GPUImageVideoCamera *videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
-    
-    //GPUImageFilter *customFilter = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"CustomShader"];
-    GPUImageFilter *filter = [[GPUImageColorInvertFilter alloc] init];
-    GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:CGRectMake(50.0, 50.0, 200, 200)];
-    
-    // Add the view somewhere so it's visible
-    [self.view addSubview:filteredVideoView];
-    
-    [videoCamera addTarget:filter];
-    [filter addTarget:filteredVideoView];
-    
-    [videoCamera startCameraCapture];
 }
 */
 
