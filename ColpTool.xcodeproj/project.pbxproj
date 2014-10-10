@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6D1C41B519E667F100F8600C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41B419E667F100F8600C /* main.m */; };
+		6D1C41B819E667F100F8600C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41B719E667F100F8600C /* AppDelegate.m */; };
+		6D1C41BE19E667F100F8600C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41BC19E667F100F8600C /* Main.storyboard */; };
+		6D1C41C019E667F100F8600C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41BF19E667F100F8600C /* Images.xcassets */; };
+		6D1C41C319E667F100F8600C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41C119E667F100F8600C /* LaunchScreen.xib */; };
+		6D1C41CF19E667F100F8600C /* ColpToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41CE19E667F100F8600C /* ColpToolTests.m */; };
+		6D1C41DC19E6680C00F8600C /* CTViewfinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41D919E6680C00F8600C /* CTViewfinderViewController.m */; };
+		6D1C41DD19E6680C00F8600C /* CTViewfinderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41DA19E6680C00F8600C /* CTViewfinderView.m */; };
+		6D1C41E219E6766300F8600C /* flash-off.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41E019E6766300F8600C /* flash-off.png */; };
+		6D1C41E319E6766300F8600C /* flash-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41E119E6766300F8600C /* flash-on.png */; };
+		6D1C41E519E6768000F8600C /* ClockGrid.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41E419E6768000F8600C /* ClockGrid.png */; };
+		6D1C41EA19E731A300F8600C /* CTCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41E919E731A300F8600C /* CTCamera.m */; };
+		6D1C41ED19E738B200F8600C /* CTSharedServiceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41EC19E738B200F8600C /* CTSharedServiceLocator.m */; };
+		6D1C41F219E743D000F8600C /* ToDo in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41F019E743D000F8600C /* ToDo */; };
+		6D1C41F319E743D000F8600C /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41F119E743D000F8600C /* TemplateIcon2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6D1C41C919E667F100F8600C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6D1C41A719E667F100F8600C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6D1C41AE19E667F100F8600C;
+			remoteInfo = ColpTool;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		6D1C41AF19E667F100F8600C /* ColpTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColpTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D1C41B319E667F100F8600C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D1C41B419E667F100F8600C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6D1C41B619E667F100F8600C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6D1C41B719E667F100F8600C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6D1C41BD19E667F100F8600C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6D1C41BF19E667F100F8600C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		6D1C41C219E667F100F8600C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		6D1C41C819E667F100F8600C /* ColpToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColpToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D1C41CD19E667F100F8600C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6D1C41CE19E667F100F8600C /* ColpToolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColpToolTests.m; sourceTree = "<group>"; };
+		6D1C41D819E6680C00F8600C /* CTViewfinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTViewfinderViewController.h; sourceTree = "<group>"; };
+		6D1C41D919E6680C00F8600C /* CTViewfinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTViewfinderViewController.m; sourceTree = "<group>"; };
+		6D1C41DA19E6680C00F8600C /* CTViewfinderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTViewfinderView.m; sourceTree = "<group>"; };
+		6D1C41DB19E6680C00F8600C /* CTViewfinderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTViewfinderView.h; sourceTree = "<group>"; };
+		6D1C41E019E6766300F8600C /* flash-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash-off.png"; sourceTree = "<group>"; };
+		6D1C41E119E6766300F8600C /* flash-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash-on.png"; sourceTree = "<group>"; };
+		6D1C41E419E6768000F8600C /* ClockGrid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClockGrid.png; sourceTree = "<group>"; };
+		6D1C41E819E731A300F8600C /* CTCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCamera.h; sourceTree = "<group>"; };
+		6D1C41E919E731A300F8600C /* CTCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCamera.m; sourceTree = "<group>"; };
+		6D1C41EB19E738B200F8600C /* CTSharedServiceLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSharedServiceLocator.h; sourceTree = "<group>"; };
+		6D1C41EC19E738B200F8600C /* CTSharedServiceLocator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSharedServiceLocator.m; sourceTree = "<group>"; };
+		6D1C41EE19E738F400F8600C /* CTImports.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTImports.h; sourceTree = "<group>"; };
+		6D1C41F019E743D000F8600C /* ToDo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ToDo; sourceTree = "<group>"; };
+		6D1C41F119E743D000F8600C /* TemplateIcon2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TemplateIcon2x.png; sourceTree = "<group>"; };
+		6D1C41F419E74CA900F8600C /* CTMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTMacros.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6D1C41AC19E667F100F8600C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D1C41C519E667F100F8600C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6D1C41A619E667F100F8600C = {
+			isa = PBXGroup;
+			children = (
+				6D1C41B119E667F100F8600C /* ColpTool */,
+				6D1C41CB19E667F100F8600C /* ColpToolTests */,
+				6D1C41B019E667F100F8600C /* Products */,
+				6D1C41DE19E671AE00F8600C /* Resources */,
+			);
+			sourceTree = "<group>";
+		};
+		6D1C41B019E667F100F8600C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6D1C41AF19E667F100F8600C /* ColpTool.app */,
+				6D1C41C819E667F100F8600C /* ColpToolTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6D1C41B119E667F100F8600C /* ColpTool */ = {
+			isa = PBXGroup;
+			children = (
+				6D1C41B619E667F100F8600C /* AppDelegate.h */,
+				6D1C41B719E667F100F8600C /* AppDelegate.m */,
+				6D1C41D819E6680C00F8600C /* CTViewfinderViewController.h */,
+				6D1C41D919E6680C00F8600C /* CTViewfinderViewController.m */,
+				6D1C41DB19E6680C00F8600C /* CTViewfinderView.h */,
+				6D1C41DA19E6680C00F8600C /* CTViewfinderView.m */,
+				6D1C41E819E731A300F8600C /* CTCamera.h */,
+				6D1C41E919E731A300F8600C /* CTCamera.m */,
+				6D1C41EB19E738B200F8600C /* CTSharedServiceLocator.h */,
+				6D1C41EC19E738B200F8600C /* CTSharedServiceLocator.m */,
+				6D1C41EE19E738F400F8600C /* CTImports.h */,
+				6D1C41F419E74CA900F8600C /* CTMacros.h */,
+				6D1C41BC19E667F100F8600C /* Main.storyboard */,
+				6D1C41BF19E667F100F8600C /* Images.xcassets */,
+				6D1C41C119E667F100F8600C /* LaunchScreen.xib */,
+				6D1C41B219E667F100F8600C /* Supporting Files */,
+				6D1C41F019E743D000F8600C /* ToDo */,
+				6D1C41F119E743D000F8600C /* TemplateIcon2x.png */,
+			);
+			path = ColpTool;
+			sourceTree = "<group>";
+		};
+		6D1C41B219E667F100F8600C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6D1C41B319E667F100F8600C /* Info.plist */,
+				6D1C41B419E667F100F8600C /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6D1C41CB19E667F100F8600C /* ColpToolTests */ = {
+			isa = PBXGroup;
+			children = (
+				6D1C41CE19E667F100F8600C /* ColpToolTests.m */,
+				6D1C41CC19E667F100F8600C /* Supporting Files */,
+			);
+			path = ColpToolTests;
+			sourceTree = "<group>";
+		};
+		6D1C41CC19E667F100F8600C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6D1C41CD19E667F100F8600C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6D1C41DE19E671AE00F8600C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6D1C41DF19E671CB00F8600C /* Asset */,
+			);
+			name = Resources;
+			path = ColpTool;
+			sourceTree = "<group>";
+		};
+		6D1C41DF19E671CB00F8600C /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				6D1C41E019E6766300F8600C /* flash-off.png */,
+				6D1C41E119E6766300F8600C /* flash-on.png */,
+				6D1C41E419E6768000F8600C /* ClockGrid.png */,
+			);
+			name = Asset;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6D1C41AE19E667F100F8600C /* ColpTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D1C41D219E667F100F8600C /* Build configuration list for PBXNativeTarget "ColpTool" */;
+			buildPhases = (
+				6D1C41AB19E667F100F8600C /* Sources */,
+				6D1C41AC19E667F100F8600C /* Frameworks */,
+				6D1C41AD19E667F100F8600C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ColpTool;
+			productName = ColpTool;
+			productReference = 6D1C41AF19E667F100F8600C /* ColpTool.app */;
+			productType = "com.apple.product-type.application";
+		};
+		6D1C41C719E667F100F8600C /* ColpToolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6D1C41D519E667F100F8600C /* Build configuration list for PBXNativeTarget "ColpToolTests" */;
+			buildPhases = (
+				6D1C41C419E667F100F8600C /* Sources */,
+				6D1C41C519E667F100F8600C /* Frameworks */,
+				6D1C41C619E667F100F8600C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6D1C41CA19E667F100F8600C /* PBXTargetDependency */,
+			);
+			name = ColpToolTests;
+			productName = ColpToolTests;
+			productReference = 6D1C41C819E667F100F8600C /* ColpToolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6D1C41A719E667F100F8600C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Alda Luong";
+				TargetAttributes = {
+					6D1C41AE19E667F100F8600C = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					6D1C41C719E667F100F8600C = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = 6D1C41AE19E667F100F8600C;
+					};
+				};
+			};
+			buildConfigurationList = 6D1C41AA19E667F100F8600C /* Build configuration list for PBXProject "ColpTool" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6D1C41A619E667F100F8600C;
+			productRefGroup = 6D1C41B019E667F100F8600C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6D1C41AE19E667F100F8600C /* ColpTool */,
+				6D1C41C719E667F100F8600C /* ColpToolTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6D1C41AD19E667F100F8600C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D1C41BE19E667F100F8600C /* Main.storyboard in Resources */,
+				6D1C41F219E743D000F8600C /* ToDo in Resources */,
+				6D1C41C319E667F100F8600C /* LaunchScreen.xib in Resources */,
+				6D1C41E519E6768000F8600C /* ClockGrid.png in Resources */,
+				6D1C41F319E743D000F8600C /* TemplateIcon2x.png in Resources */,
+				6D1C41E319E6766300F8600C /* flash-on.png in Resources */,
+				6D1C41E219E6766300F8600C /* flash-off.png in Resources */,
+				6D1C41C019E667F100F8600C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D1C41C619E667F100F8600C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6D1C41AB19E667F100F8600C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D1C41DC19E6680C00F8600C /* CTViewfinderViewController.m in Sources */,
+				6D1C41DD19E6680C00F8600C /* CTViewfinderView.m in Sources */,
+				6D1C41EA19E731A300F8600C /* CTCamera.m in Sources */,
+				6D1C41B819E667F100F8600C /* AppDelegate.m in Sources */,
+				6D1C41ED19E738B200F8600C /* CTSharedServiceLocator.m in Sources */,
+				6D1C41B519E667F100F8600C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6D1C41C419E667F100F8600C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6D1C41CF19E667F100F8600C /* ColpToolTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		6D1C41CA19E667F100F8600C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6D1C41AE19E667F100F8600C /* ColpTool */;
+			targetProxy = 6D1C41C919E667F100F8600C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		6D1C41BC19E667F100F8600C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D1C41BD19E667F100F8600C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6D1C41C119E667F100F8600C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6D1C41C219E667F100F8600C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6D1C41D019E667F100F8600C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6D1C41D119E667F100F8600C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6D1C41D319E667F100F8600C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ColpTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6D1C41D419E667F100F8600C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ColpTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6D1C41D619E667F100F8600C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ColpToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColpTool.app/ColpTool";
+			};
+			name = Debug;
+		};
+		6D1C41D719E667F100F8600C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ColpToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColpTool.app/ColpTool";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6D1C41AA19E667F100F8600C /* Build configuration list for PBXProject "ColpTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D1C41D019E667F100F8600C /* Debug */,
+				6D1C41D119E667F100F8600C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D1C41D219E667F100F8600C /* Build configuration list for PBXNativeTarget "ColpTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D1C41D319E667F100F8600C /* Debug */,
+				6D1C41D419E667F100F8600C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6D1C41D519E667F100F8600C /* Build configuration list for PBXNativeTarget "ColpToolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6D1C41D619E667F100F8600C /* Debug */,
+				6D1C41D719E667F100F8600C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6D1C41A719E667F100F8600C /* Project object */;
+}
