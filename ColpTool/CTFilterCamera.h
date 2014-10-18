@@ -7,7 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+@class GPUImageView;
+@class GPUImageVideoCamera;
 
 @interface CTFilterCamera : NSObject
--(void)setupGreenFilterCamera;
+
+@property (nonatomic, strong) GPUImageVideoCamera *videoCamera;
+
+- (void)setupFilterCamera:(GPUImageView *)filterView;
+- (void)toggleTorch;
+- (void)toggleFilter;
+
+@property (nonatomic, assign) BOOL torchIsOn;
+@property (nonatomic, assign) BOOL filterIsOn;
+
 @end

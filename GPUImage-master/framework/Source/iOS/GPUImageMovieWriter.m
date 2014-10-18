@@ -543,9 +543,9 @@ NSString *const kGPUImageColorSwizzlingFragmentShaderString = SHADER_STRING
     }
     
 	
-	GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+	//GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
     
-    NSAssert(status == GL_FRAMEBUFFER_COMPLETE, @"Incomplete filter FBO: %d", status);
+    //NSAssert(status == GL_FRAMEBUFFER_COMPLETE, @"Incomplete filter FBO: %d", status);
 }
 
 - (void)destroyDataFBO;

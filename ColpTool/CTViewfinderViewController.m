@@ -14,34 +14,109 @@
 
 @interface CTViewfinderViewController ()
 
-@property (nonatomic, strong) CTCamera *camera;
+@property (nonatomic, strong) CTFilterCamera *camera;
 @property (nonatomic, strong) CTViewfinderView *cameraViewOverlayView;
+@property (nonatomic, strong) GPUImageView *filterView;
 
 @end
 
 @implementation CTViewfinderViewController
 
-
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    self.camera = [CTSharedServiceLocator sharedServiceLocator].camera;
+    self.filterView = (GPUImageView *)self.view;
     self.cameraViewOverlayView = [[CTViewfinderView alloc] initWithFrame:self.view.bounds];
+    [self.filterView addSubview:self.cameraViewOverlayView];
+    [self.filterView setBackgroundColorRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    self.camera = [CTSharedServiceLocator sharedServiceLocator].filterCamera;
     
-    CTWeakSelf weakSelf = self;
-    self.cameraViewOverlayView.flashModeToggleActionBlock = ^(BOOL on) {
-        CTStrongSelf strongSelf = weakSelf;
-        [strongSelf toggleFlashMode];
-    };
+    [self.camera setupFilterCamera:self.filterView];
+    
+    // Record a movie for 10 s and store it in /Documents, visible via iTunes file sharing
+   /* NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
+    unlink([pathToMovie UTF8String]); // If a file already exists, AVAssetWriter won't let you record new frames, so delete the old movie
+    NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
+    movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(480.0, 640.0)];
+    [filter addTarget:movieWriter];
+    
+    [videoCamera startCameraCapture];
+    
+    double delayToStartRecording = 0.5;
+    dispatch_time_t startTime = dispatch_time(DISPATCH_TIME_NOW, delayToStartRecording * NSEC_PER_SEC);
+    dispatch_after(startTime, dispatch_get_main_queue(), ^(void){
+        NSLog(@"Start recording");
+    });*/
+    
+     CTWeakSelf weakSelf = self;
+     self.cameraViewOverlayView.flashModeToggleActionBlock = ^() {
+         CTStrongSelf strongSelf = weakSelf;
+         [strongSelf toggleFlashMode];
+     };
+    
     /*
-    self.cameraViewOverlayView.gridToggleActionBlock = ^(BOOL on) {
-        CTStrongSelf strongSelf = weakSelf;
-    };*/
-    /*
-    self.cameraViewOverlayView.filterToggleActionBlock = ^(BOOL on) {
-        CTStrongSelf strongSelf = weakSelf;
-    };*/
+     self.cameraViewOverlayView.gridToggleActionBlock = ^(BOOL on) {
+     CTStrongSelf strongSelf = weakSelf;
+     };*/
+    
+     self.cameraViewOverlayView.filterToggleActionBlock = ^() {
+         CTStrongSelf strongSelf = weakSelf;
+         [strongSelf toggleFilter];
+     };
+    
+    UIGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    recognizer.delegate = self;
+    [self.view addGestureRecognizer:recognizer];
+}
+
+
+- (void)handlePinch:(UIPinchGestureRecognizer *)recognizer
+{
+    if (recognizer.state == UIGestureRecognizerStateEnded) {
+        NSNumber *zoomScale = [NSNumber numberWithFloat:[recognizer scale]];
+        NSLog(@"zoom scale - %@", zoomScale);
+        CGFloat currentZoom;
+        static CGFloat lastZoom = 1.0f;
+        AVCaptureDevice *device = self.camera.videoCamera.inputCamera;
+        CGFloat maxZoom = device.activeFormat.videoMaxZoomFactor;
+        CGFloat minZoom = 1.0f;
+        CGFloat zoomScaleFloat = [zoomScale floatValue];
+        
+        //currentZoom += zoomScaleFloat - lastZoom;
+        /*
+        if (recognizer.state == UIGestureRecognizerStateEnded) {
+            lastZoom = 1.0;
+        }*/
+        currentZoom = zoomScaleFloat;
+        
+         if (zoomScaleFloat < 1) {
+             currentZoom = lastZoom - zoomScaleFloat*5;
+         } else {
+             currentZoom = zoomScaleFloat/10 + lastZoom;
+         }
+        
+        currentZoom = currentZoom >= maxZoom ? maxZoom : currentZoom;
+        currentZoom = currentZoom < minZoom ? minZoom : currentZoom;
+        
+        [device lockForConfiguration:nil];
+        
+        /*
+        CGAffineTransform currentTransform = CGAffineTransformIdentity;
+        CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, currentZoom, currentZoom);
+        
+        self.filterView.transform = newTransform;
+        */
+        
+        //if ([device respondsToSelector:@selector(rampToVideoZoomFactor:)] {
+        //device.videoZoomFactor = zoomScaleFloat;
+        [device rampToVideoZoomFactor:currentZoom withRate:1.0f];
+        //}
+        
+        [device unlockForConfiguration];
+        
+        lastZoom = currentZoom;
+    }
 }
 
 
@@ -49,7 +124,6 @@
 {
     //[self presentViewController:self.camera.cameraPicker animated:YES completion:nil];
     //self.camera.cameraPicker.cameraOverlayView = self.cameraViewOverlayView;
-    [self setupGreenFilterCamera];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,43 +132,10 @@
 }
 
 - (void)toggleFlashMode {
-    if (self.camera.flashMode == UIImagePickerControllerCameraFlashModeOff) {
-        self.camera.flashMode = UIImagePickerControllerCameraFlashModeOn;
-    } else {
-        self.camera.flashMode = UIImagePickerControllerCameraFlashModeOff;
-    }
+    [self.camera toggleTorch];
 }
 
-/*
-- (void)toggleGrid {
-
-}*/
-
-- (void)setupGreenFilterCamera
-{
-    GPUImageVideoCamera *videoCamera = [[GPUImageVideoCamera alloc] initWithSessionPreset:AVCaptureSessionPreset640x480 cameraPosition:AVCaptureDevicePositionBack];
-    
-    //GPUImageFilter *customFilter = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"CustomShader"];
-    GPUImageFilter *filter = [[GPUImageColorInvertFilter alloc] init];
-    GPUImageView *filteredVideoView = [[GPUImageView alloc] initWithFrame:CGRectMake(50.0, 50.0, 200, 200)];
-    
-    // Add the view somewhere so it's visible
-    [self.view addSubview:filteredVideoView];
-    
-    [videoCamera addTarget:filter];
-    [filter addTarget:filteredVideoView];
-    
-    [videoCamera startCameraCapture];
+- (void)toggleFilter {
+    [self.camera toggleFilter];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

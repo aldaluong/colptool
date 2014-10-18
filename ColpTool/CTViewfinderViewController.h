@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GPUImage.h"
 
-@interface CTViewfinderViewController : UIViewController
+@interface CTViewfinderViewController : UIViewController<UIGestureRecognizerDelegate>
 
 @end

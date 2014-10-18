@@ -17,14 +17,13 @@ static NSString *const kGridImage = @"ClockGrid.png";
 
 @interface CTViewfinderView()
 
+@property (nonatomic, strong) CTFilterCamera *camera;
 @property (nonatomic, strong) UISwitch *gridSwitch;
 @property (nonatomic, strong) UILabel *gridSwitchLabel;
 @property (nonatomic, assign) BOOL gridOn;
 @property (nonatomic, strong) UISwitch *filterSwitch;
 @property (nonatomic, strong) UILabel *filterSwitchLabel;
-@property (nonatomic, assign) BOOL filterOn;
 @property (nonatomic, strong) UIButton *flashModeButton;
-@property (nonatomic, assign) BOOL flashOn;
 @property (nonatomic, strong) UIImageView *grid;
 @end
 
@@ -36,15 +35,14 @@ static NSString *const kGridImage = @"ClockGrid.png";
     if (self) {
         
         // Initialization code
+        self.camera = [CTSharedServiceLocator sharedServiceLocator].filterCamera;
         self.backgroundColor  = [UIColor clearColor];
         [self addSubview:self.gridSwitch];
         [self addSubview:self.gridSwitchLabel];
         [self addSubview:self.filterSwitch];
         [self addSubview:self.filterSwitchLabel];
         [self addSubview:self.flashModeButton];
-        self.flashOn = [[CTSharedServiceLocator sharedServiceLocator].camera flashOn];
         self.gridOn = NO;
-        self.filterOn = NO;
     }
     return self;
 }
@@ -54,7 +52,7 @@ static NSString *const kGridImage = @"ClockGrid.png";
     if (_flashModeButton == nil) {
         CGRect frame = (CGRect) {
             .origin.x = 20.f,
-            .origin.y = 10.f,
+            .origin.y = 23.f,
             .size = (CGSize){75.f, 35.f}
         };
         
@@ -70,7 +68,7 @@ static NSString *const kGridImage = @"ClockGrid.png";
     if (_gridSwitch == nil) {
         CGRect frame = (CGRect) {
             .origin.x = 138.f,
-            .origin.y = 12.f,
+            .origin.y = 23.f,
             .size = (CGSize){35.f, 35.f}
         };
         
@@ -84,15 +82,15 @@ static NSString *const kGridImage = @"ClockGrid.png";
 {
     if (_gridSwitchLabel == nil) {
         CGRect frame = (CGRect) {
-            .origin.x = 143.f,
-            .origin.y = 44.f,
+            .origin.x = 145.f,
+            .origin.y = 54.f,
             .size = (CGSize){40.f, 15.f}
         };
         
         _gridSwitchLabel = [[UILabel alloc] initWithFrame:frame];
         _gridSwitchLabel.font = [_gridSwitchLabel.font fontWithSize:12.0];
         _gridSwitchLabel.text = kGridSwitchLabel;
-        _gridSwitchLabel.textColor = [UIColor whiteColor];
+        _gridSwitchLabel.textColor = [UIColor blackColor];
         _gridSwitchLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _gridSwitchLabel;
@@ -103,7 +101,7 @@ static NSString *const kGridImage = @"ClockGrid.png";
     if (_filterSwitch == nil) {
         CGRect frame = (CGRect) {
             .origin.x = 240.f,
-            .origin.y = 12.f,
+            .origin.y = 23.f,
             .size = (CGSize){44.f, 35.f}
         };
         
@@ -117,15 +115,15 @@ static NSString *const kGridImage = @"ClockGrid.png";
 {
     if (_filterSwitchLabel == nil) {
         CGRect frame = (CGRect) {
-            .origin.x = 245.f,
-            .origin.y = 44.f,
+            .origin.x = 247.f,
+            .origin.y = 54.f,
             .size = (CGSize){40.f, 15.f}
         };
         
         _filterSwitchLabel = [[UILabel alloc] initWithFrame:frame];
          _filterSwitchLabel.font = [_filterSwitchLabel.font fontWithSize:12.0];
         _filterSwitchLabel.text = kFilterSwitchLabel;
-        _filterSwitchLabel.textColor = [UIColor whiteColor];
+        _filterSwitchLabel.textColor = [UIColor blackColor];
         _filterSwitchLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _filterSwitchLabel;
@@ -136,7 +134,7 @@ static NSString *const kGridImage = @"ClockGrid.png";
     if (_grid == nil) {
         CGRect frame = (CGRect) {
             .origin.x = 2.f,
-            .origin.y = 100.f,
+            .origin.y = 125.f,
             .size = (CGSize){310.f, 310.f}
         };
         UIImage *gridImage = [UIImage imageNamed:kGridImage];
@@ -151,13 +149,13 @@ static NSString *const kGridImage = @"ClockGrid.png";
 {
     if (sender == self.flashModeButton) {
         if (self.flashModeToggleActionBlock != nil) {
-            self.flashOn = !self.flashOn;
-            if (self.flashOn == YES) {
+            BOOL flashOn = [self.camera torchIsOn];
+            if (flashOn == YES) {
                 [self.flashModeButton setImage:[UIImage imageNamed:kFlashButtonOnImage] forState:UIControlStateNormal];
             } else {
                 [self.flashModeButton setImage:[UIImage imageNamed:kFlashButtonOffImage] forState:UIControlStateNormal];
             }
-            self.flashModeToggleActionBlock(self.flashOn);
+            self.flashModeToggleActionBlock(flashOn);
         }
     }
 }
@@ -184,8 +182,7 @@ static NSString *const kGridImage = @"ClockGrid.png";
 {
     if (sender == self.filterSwitch) {
         if (self.filterToggleActionBlock != nil) {
-            self.filterOn = !self.filterOn;
-            self.filterToggleActionBlock(self.filterOn);
+            self.filterToggleActionBlock();
         }
     }
 }

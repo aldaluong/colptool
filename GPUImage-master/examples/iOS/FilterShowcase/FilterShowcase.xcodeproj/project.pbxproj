@@ -44,6 +44,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6D45735819EB5C6E0073FAC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC982B2714F049950001FF6F /* GPUImage.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCE209E51943F20C002FEED8;
+			remoteInfo = GPUImageFramework;
+		};
 		BCF866C31725894100912E34 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BC982B2714F049950001FF6F /* GPUImage.xcodeproj */;
@@ -214,6 +221,7 @@
 			children = (
 				BCF866C41725894100912E34 /* libGPUImage.a */,
 				BCF866C61725894100912E34 /* GPUImageTests.octest */,
+				6D45735919EB5C6E0073FAC2 /* GPUImage.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -250,7 +258,7 @@
 				ORGANIZATIONNAME = "Cell Phone";
 				TargetAttributes = {
 					BC982B0114F046AC0001FF6F = {
-						DevelopmentTeam = J2U2U9GBML;
+						DevelopmentTeam = RJ2K2K546C;
 					};
 				};
 			};
@@ -278,6 +286,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		6D45735919EB5C6E0073FAC2 /* GPUImage.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GPUImage.framework;
+			remoteRef = 6D45735819EB5C6E0073FAC2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		BCF866C41725894100912E34 /* libGPUImage.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;

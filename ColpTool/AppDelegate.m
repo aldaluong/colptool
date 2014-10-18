@@ -17,10 +17,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self.window makeKeyAndVisible];
+   /* self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.backgroundColor = [UIColor blueColor];
     CTViewfinderViewController *ctvc = [[CTViewfinderViewController alloc] init];
-    self.window.rootViewController = ctvc;
+    [self.window addSubview:ctvc.view];
+    [self.window makeKeyAndVisible];
+    [self.window layoutSubviews];
+    self.window.rootViewController = ctvc;*/
     
     return YES;
 }
