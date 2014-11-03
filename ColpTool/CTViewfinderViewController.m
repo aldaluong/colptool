@@ -27,6 +27,7 @@
     [super viewDidLoad];
     
     self.filterView = (GPUImageView *)self.view;
+    self.filterView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
     self.cameraViewOverlayView = [[CTViewfinderView alloc] initWithFrame:self.view.bounds];
     [self.filterView addSubview:self.cameraViewOverlayView];
     [self.filterView setBackgroundColorRed:1.0 green:1.0 blue:1.0 alpha:1.0];
@@ -65,12 +66,17 @@
          [strongSelf toggleFilter];
      };
     
-    UIGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
-    recognizer.delegate = self;
-    [self.view addGestureRecognizer:recognizer];
+    UIGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    pinchRecognizer.delegate = self;
+    [self.view addGestureRecognizer:pinchRecognizer];
+    /*
+    UIGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTouch:)];
+    tapRecognizer.delegate = self;
+    [self.view addGestureRecognizer:tapRecognizer];
+     */
 }
 
-
+/*
 - (void)handlePinch:(UIPinchGestureRecognizer *)recognizer
 {
     if (recognizer.state == UIGestureRecognizerStateEnded) {
@@ -83,11 +89,6 @@
         CGFloat minZoom = 1.0f;
         CGFloat zoomScaleFloat = [zoomScale floatValue];
         
-        //currentZoom += zoomScaleFloat - lastZoom;
-        /*
-        if (recognizer.state == UIGestureRecognizerStateEnded) {
-            lastZoom = 1.0;
-        }*/
         currentZoom = zoomScaleFloat;
         
          if (zoomScaleFloat < 1) {
@@ -101,24 +102,56 @@
         
         [device lockForConfiguration:nil];
         
-        /*
-        CGAffineTransform currentTransform = CGAffineTransformIdentity;
-        CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, currentZoom, currentZoom);
-        
-        self.filterView.transform = newTransform;
-        */
-        
-        //if ([device respondsToSelector:@selector(rampToVideoZoomFactor:)] {
-        //device.videoZoomFactor = zoomScaleFloat;
         [device rampToVideoZoomFactor:currentZoom withRate:1.0f];
-        //}
         
         [device unlockForConfiguration];
         
         lastZoom = currentZoom;
     }
-}
+}*/
 
+- (void)handlePinch:(UIPinchGestureRecognizer *)recognizer
+{
+    AVCaptureDevice *device = self.camera.videoCamera.inputCamera;
+    static CGFloat lastScale = 1.0;
+    static CGFloat currentScale = 0;
+    CGFloat maxZoom = 5.0f; //device.activeFormat.videoMaxZoomFactor;
+    CGFloat minZoom = 1.0f;
+    CGFloat delta = 0.0f;
+
+    switch ([recognizer state]) {
+        //case UIGestureRecognizerStateBegan:
+        case UIGestureRecognizerStateChanged:
+            
+            delta = [recognizer scale] - lastScale;
+            
+            NSLog(@"currentScale - %f, recognizerScale - %f, lastScale - %f, delta - %f", currentScale, [recognizer scale], lastScale,delta);
+
+            currentScale += delta;
+            
+            currentScale = CLAMP(currentScale, minZoom, maxZoom);
+            lastScale = [recognizer scale];
+            
+            [device lockForConfiguration:nil];
+            device.videoZoomFactor = currentScale;
+            [device unlockForConfiguration];
+             
+            /*
+            CGAffineTransform currentTransform = CGAffineTransformIdentity;
+            CGAffineTransform newTransform = CGAffineTransformScale(currentTransform, currentScale, currentScale);
+            self.filterView.transform = newTransform;
+            */
+            break;
+            
+        case UIGestureRecognizerStateEnded:
+            lastScale = 1.0f;
+            break;
+            
+        default:
+             lastScale = 1.0f;
+            break;
+    }
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
