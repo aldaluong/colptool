@@ -7,7 +7,9 @@
 //
 
 #import "CTFilterCamera.h"
-#import "GPUImage.h"
+#import <GPUImage/GPUImageView.h>
+#import <GPUImage/GPUImageVideoCamera.h>
+#import <GPUImage/GPUImageRGBFilter.h>
 
 @interface CTFilterCamera()
 

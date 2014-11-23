@@ -10,7 +10,9 @@
 #import "CTViewfinderView.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "CTImports.h"
-#import "GPUImage.h"
+#import <GPUImage/GPUImageView.h>
+#import <GPUImage/GPUImageVideoCamera.h>
+#import <AVFoundation/AVCaptureDevice.h>
 
 @interface CTViewfinderViewController ()
 

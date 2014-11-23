@@ -69,7 +69,7 @@ static NSString *const kGridImage = @"ClockGrid.png";
         CGRect frame = (CGRect) {
             .origin.x = 138.f,
             .origin.y = 23.f,
-            .size = (CGSize){35.f, 35.f}
+            .size = (CGSize){40.f, 40.f}
         };
         
         _gridSwitch = [[UISwitch alloc] initWithFrame:frame];
