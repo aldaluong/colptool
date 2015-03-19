@@ -24,13 +24,14 @@
 		6D2406FE1A15A0510006248A /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D2406FD1A15A0510006248A /* Media.xcassets */; };
 		6D2634CF1AA28637001E078C /* ClockGrid.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2634CE1AA28637001E078C /* ClockGrid.png */; };
 		6DF2434D1A08D51F00A48B4C /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFDA2EE19E7943800F69237 /* GPUImage.framework */; };
-		6DF2434F1A08D53400A48B4C /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6DFDA2EE19E7943800F69237 /* GPUImage.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		6DF2434F1A08D53400A48B4C /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6DFDA2EE19E7943800F69237 /* GPUImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6DFDA2D119E788DB00F69237 /* CTFilterCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFDA2D019E788DB00F69237 /* CTFilterCamera.m */; };
 		6DFDA2F319E7947E00F69237 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFDA2F219E7947E00F69237 /* CoreMedia.framework */; };
 		6DFDA2F519E7948700F69237 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFDA2F419E7948700F69237 /* CoreVideo.framework */; };
 		6DFDA2F719E7949000F69237 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFDA2F619E7949000F69237 /* OpenGLES.framework */; };
 		6DFDA2F919E7949600F69237 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFDA2F819E7949600F69237 /* AVFoundation.framework */; };
 		6DFDA2FB19E7949C00F69237 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFDA2FA19E7949C00F69237 /* QuartzCore.framework */; };
+		8B688F3748BF5CAD53CE8CEA /* libPods-ColpTool.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C963026A44D5A8B08E1964A /* libPods-ColpTool.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5C7E3B5EC87DA269FA156A71 /* Pods-ColpTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColpTool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColpTool/Pods-ColpTool.debug.xcconfig"; sourceTree = "<group>"; };
 		6D1C41AF19E667F100F8600C /* ColpTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColpTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D1C41B319E667F100F8600C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D1C41B419E667F100F8600C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -120,6 +122,8 @@
 		6DFDA2F619E7949000F69237 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		6DFDA2F819E7949600F69237 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		6DFDA2FA19E7949C00F69237 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		7C963026A44D5A8B08E1964A /* libPods-ColpTool.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ColpTool.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C67798CAFA431DF7C4377534 /* Pods-ColpTool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColpTool.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColpTool/Pods-ColpTool.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +137,7 @@
 				6DFDA2F719E7949000F69237 /* OpenGLES.framework in Frameworks */,
 				6DFDA2F519E7948700F69237 /* CoreVideo.framework in Frameworks */,
 				6DFDA2F319E7947E00F69237 /* CoreMedia.framework in Frameworks */,
+				8B688F3748BF5CAD53CE8CEA /* libPods-ColpTool.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +151,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2508D31698B3AFBCBAC8BC7E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5C7E3B5EC87DA269FA156A71 /* Pods-ColpTool.debug.xcconfig */,
+				C67798CAFA431DF7C4377534 /* Pods-ColpTool.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		6D1C41A619E667F100F8600C = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +168,7 @@
 				6D1C41B019E667F100F8600C /* Products */,
 				6D1C41DE19E671AE00F8600C /* Resources */,
 				6DFDA2C019E7854700F69237 /* Frameworks */,
+				2508D31698B3AFBCBAC8BC7E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -248,6 +263,7 @@
 				6DFDA2F419E7948700F69237 /* CoreVideo.framework */,
 				6DFDA2F219E7947E00F69237 /* CoreMedia.framework */,
 				6DFDA2E219E7943700F69237 /* GPUImage.xcodeproj */,
+				7C963026A44D5A8B08E1964A /* libPods-ColpTool.a */,
 			);
 			name = Frameworks;
 			path = ColpTool;
@@ -270,10 +286,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D1C41D219E667F100F8600C /* Build configuration list for PBXNativeTarget "ColpTool" */;
 			buildPhases = (
+				AD47B9E05B0D96DAC4874259 /* Check Pods Manifest.lock */,
 				6D1C41AB19E667F100F8600C /* Sources */,
 				6D1C41AC19E667F100F8600C /* Frameworks */,
 				6D1C41AD19E667F100F8600C /* Resources */,
 				6DF2434E1A08D52300A48B4C /* CopyFiles */,
+				3F911DB0279B7A92234A3546 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -309,7 +327,7 @@
 		6D1C41A719E667F100F8600C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Alda Luong";
 				TargetAttributes = {
 					6D1C41AE19E667F100F8600C = {
@@ -398,6 +416,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3F911DB0279B7A92234A3546 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ColpTool/Pods-ColpTool-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD47B9E05B0D96DAC4874259 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		6D1C41AB19E667F100F8600C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -474,8 +525,8 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Alda Luong (EW9PZWS5JR)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alda Luong (EW9PZWS5JR)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -495,7 +546,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "98017236-4cbc-4b02-b663-0463bc80925c";
+				PROVISIONING_PROFILE = "d5658b45-dd6d-45bf-88e3-a2ccf2620e17";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -541,11 +592,12 @@
 		};
 		6D1C41D319E667F100F8600C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C7E3B5EC87DA269FA156A71 /* Pods-ColpTool.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Alda Luong (EW9PZWS5JR)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Alda Luong (EW9PZWS5JR)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -559,18 +611,19 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "98017236-4cbc-4b02-b663-0463bc80925c";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		6D1C41D419E667F100F8600C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C67798CAFA431DF7C4377534 /* Pods-ColpTool.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Alda Luong (RJ2K2K546C)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Alda Luong (RJ2K2K546C)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -584,7 +637,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7e58c5d8-08ad-4a39-99e3-b3f541de18d6";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
