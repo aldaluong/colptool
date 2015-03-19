@@ -16,13 +16,13 @@
 		6D1C41DD19E6680C00F8600C /* CTViewfinderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41DA19E6680C00F8600C /* CTViewfinderView.m */; };
 		6D1C41E219E6766300F8600C /* flash-off.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41E019E6766300F8600C /* flash-off.png */; };
 		6D1C41E319E6766300F8600C /* flash-on.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41E119E6766300F8600C /* flash-on.png */; };
-		6D1C41E519E6768000F8600C /* ClockGrid.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41E419E6768000F8600C /* ClockGrid.png */; };
 		6D1C41EA19E731A300F8600C /* CTCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41E919E731A300F8600C /* CTCamera.m */; };
 		6D1C41ED19E738B200F8600C /* CTSharedServiceLocator.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D1C41EC19E738B200F8600C /* CTSharedServiceLocator.m */; };
 		6D1C41F219E743D000F8600C /* ToDo in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41F019E743D000F8600C /* ToDo */; };
 		6D1C41F319E743D000F8600C /* TemplateIcon2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D1C41F119E743D000F8600C /* TemplateIcon2x.png */; };
 		6D2406AD1A159DB40006248A /* ClockGridWhiteBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2406AC1A159DB40006248A /* ClockGridWhiteBackground.png */; };
 		6D2406FE1A15A0510006248A /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D2406FD1A15A0510006248A /* Media.xcassets */; };
+		6D2634CF1AA28637001E078C /* ClockGrid.png in Resources */ = {isa = PBXBuildFile; fileRef = 6D2634CE1AA28637001E078C /* ClockGrid.png */; };
 		6DF2434D1A08D51F00A48B4C /* GPUImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFDA2EE19E7943800F69237 /* GPUImage.framework */; };
 		6DF2434F1A08D53400A48B4C /* GPUImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6DFDA2EE19E7943800F69237 /* GPUImage.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6DFDA2D119E788DB00F69237 /* CTFilterCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DFDA2D019E788DB00F69237 /* CTFilterCamera.m */; };
@@ -101,7 +101,6 @@
 		6D1C41DB19E6680C00F8600C /* CTViewfinderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTViewfinderView.h; sourceTree = "<group>"; };
 		6D1C41E019E6766300F8600C /* flash-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash-off.png"; sourceTree = "<group>"; };
 		6D1C41E119E6766300F8600C /* flash-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flash-on.png"; sourceTree = "<group>"; };
-		6D1C41E419E6768000F8600C /* ClockGrid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClockGrid.png; sourceTree = "<group>"; };
 		6D1C41E819E731A300F8600C /* CTCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTCamera.h; sourceTree = "<group>"; };
 		6D1C41E919E731A300F8600C /* CTCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTCamera.m; sourceTree = "<group>"; };
 		6D1C41EB19E738B200F8600C /* CTSharedServiceLocator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSharedServiceLocator.h; sourceTree = "<group>"; };
@@ -112,6 +111,7 @@
 		6D1C41F419E74CA900F8600C /* CTMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTMacros.h; sourceTree = "<group>"; };
 		6D2406AC1A159DB40006248A /* ClockGridWhiteBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClockGridWhiteBackground.png; sourceTree = "<group>"; };
 		6D2406FD1A15A0510006248A /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		6D2634CE1AA28637001E078C /* ClockGrid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ClockGrid.png; path = Resources/Assets/ClockGrid.png; sourceTree = SOURCE_ROOT; };
 		6DFDA2CF19E788DB00F69237 /* CTFilterCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFilterCamera.h; sourceTree = "<group>"; };
 		6DFDA2D019E788DB00F69237 /* CTFilterCamera.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFilterCamera.m; sourceTree = "<group>"; };
 		6DFDA2E219E7943700F69237 /* GPUImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GPUImage.xcodeproj; path = "GPUImage-master/framework/GPUImage.xcodeproj"; sourceTree = SOURCE_ROOT; };
@@ -234,7 +234,7 @@
 				6D2406AC1A159DB40006248A /* ClockGridWhiteBackground.png */,
 				6D1C41E019E6766300F8600C /* flash-off.png */,
 				6D1C41E119E6766300F8600C /* flash-on.png */,
-				6D1C41E419E6768000F8600C /* ClockGrid.png */,
+				6D2634CE1AA28637001E078C /* ClockGrid.png */,
 			);
 			name = Asset;
 			sourceTree = "<group>";
@@ -380,9 +380,9 @@
 				6D1C41BE19E667F100F8600C /* Main.storyboard in Resources */,
 				6D1C41F219E743D000F8600C /* ToDo in Resources */,
 				6D1C41C319E667F100F8600C /* LaunchScreen.xib in Resources */,
-				6D1C41E519E6768000F8600C /* ClockGrid.png in Resources */,
 				6D1C41F319E743D000F8600C /* TemplateIcon2x.png in Resources */,
 				6D1C41E319E6766300F8600C /* flash-on.png in Resources */,
+				6D2634CF1AA28637001E078C /* ClockGrid.png in Resources */,
 				6D2406AD1A159DB40006248A /* ClockGridWhiteBackground.png in Resources */,
 				6D2406FE1A15A0510006248A /* Media.xcassets in Resources */,
 				6D1C41E219E6766300F8600C /* flash-off.png in Resources */,
@@ -492,7 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "98017236-4cbc-4b02-b663-0463bc80925c";
@@ -530,7 +530,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PROVISIONING_PROFILE = "7e58c5d8-08ad-4a39-99e3-b3f541de18d6";
 				SDKROOT = iphoneos;
