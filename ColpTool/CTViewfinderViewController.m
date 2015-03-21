@@ -68,6 +68,11 @@
          [strongSelf toggleFilter];
      };
     
+    self.cameraViewOverlayView.toggleRecordActionBlock = ^() {
+        CTStrongSelf strongSelf = weakSelf;
+        [strongSelf toggleRecord];
+    };
+    
     UIGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
     pinchRecognizer.delegate = self;
     [self.view addGestureRecognizer:pinchRecognizer];
@@ -117,7 +122,7 @@
     AVCaptureDevice *device = self.camera.videoCamera.inputCamera;
     static CGFloat lastScale = 1.0;
     static CGFloat currentScale = 0;
-    CGFloat maxZoom = 5.0f; //device.activeFormat.videoMaxZoomFactor;
+    CGFloat maxZoom = device.activeFormat.videoMaxZoomFactor;
     CGFloat minZoom = 1.0f;
     CGFloat delta = 0.0f;
 
@@ -172,5 +177,13 @@
 
 - (void)toggleFilter {
     [self.camera toggleFilter];
+}
+
+- (void)toggleRecord {
+    [self.camera toggleRecord];
+}
+
+- (void)takePhoto {
+    [self.camera takePhoto];
 }
 @end

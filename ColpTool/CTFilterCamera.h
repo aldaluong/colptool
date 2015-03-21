@@ -17,6 +17,8 @@
 - (void)setupFilterCamera:(GPUImageView *)filterView;
 - (void)toggleTorch;
 - (void)toggleFilter;
+- (void)toggleRecord;
+- (void)takePhoto;
 
 @property (nonatomic, assign) BOOL torchIsOn;
 @property (nonatomic, assign) BOOL filterIsOn;

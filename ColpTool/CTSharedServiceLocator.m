@@ -8,12 +8,14 @@
 
 #import "CTSharedServiceLocator.h"
 #import "CTImports.h"
+#import "CTFileManager.h"
 
 static CTSharedServiceLocator *sharedServiceLocator = nil;
 
 @implementation CTSharedServiceLocator
 @synthesize camera = _camera;
 @synthesize filterCamera = _filterCamera;
+@synthesize fileManager = _fileManager;
 
 +(instancetype)sharedServiceLocator
 {
@@ -49,4 +51,14 @@ static CTSharedServiceLocator *sharedServiceLocator = nil;
     });
     return _filterCamera;
 }
+
+- (CTFileManager *)fileManager
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        self->_fileManager = [[CTFileManager alloc] init];
+    });
+    return _fileManager;
+}
+
 @end

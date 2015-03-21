@@ -15,6 +15,15 @@ static NSString *const kFlashButtonOffImage = @"flash-off.png";
 static NSString *const kFlashButtonOnImage = @"flash-on.png";
 static NSString *const kGridImage = @"ClockGrid.png";
 
+static const CGFloat kToolBarHeight = 20.0;
+//static const CGFloat kToolBarButtonWidth = 20.0;
+
+static const NSInteger kToolBarGridIndex = 0;
+static const NSInteger kToolBarFilterIndex = 1;
+static const NSInteger kToolBarPhotoIndex = 2;
+static const NSInteger kToolBarVideoIndex = 3;
+static const NSInteger kToolBarFlashIndex = 4;
+
 @interface CTViewfinderView()
 
 @property (nonatomic, strong) CTFilterCamera *camera;
@@ -25,6 +34,7 @@ static NSString *const kGridImage = @"ClockGrid.png";
 @property (nonatomic, strong) UILabel *filterSwitchLabel;
 @property (nonatomic, strong) UIButton *flashModeButton;
 @property (nonatomic, strong) UIImageView *grid;
+@property (nonatomic, strong) UIToolbar *toolBar;
 @end
 
 @implementation CTViewfinderView
@@ -37,14 +47,50 @@ static NSString *const kGridImage = @"ClockGrid.png";
         // Initialization code
         self.camera = [CTSharedServiceLocator sharedServiceLocator].filterCamera;
         self.backgroundColor  = [UIColor clearColor];
-        [self addSubview:self.gridSwitch];
-        [self addSubview:self.gridSwitchLabel];
-        [self addSubview:self.filterSwitch];
-        [self addSubview:self.filterSwitchLabel];
-        [self addSubview:self.flashModeButton];
+        //[self addSubview:self.gridSwitch];
+        //[self addSubview:self.gridSwitchLabel];
+        //[self addSubview:self.filterSwitch];
+        //[self addSubview:self.filterSwitchLabel];
+        //[self addSubview:self.flashModeButton];
+        [self addSubview:self.toolBar];
         self.gridOn = NO;
     }
     return self;
+}
+
+- (UIToolbar *)toolBar
+{
+    if (!_toolBar) {
+        CGRect frame = (CGRect) {
+            .origin.x = CGRectGetMinX(self.bounds),
+            .origin.y = CGRectGetMaxY(self.bounds) - kToolBarHeight,
+            .size = (CGSize) {self.bounds.size.width, kToolBarHeight}
+        };
+        
+        UIBarButtonItem *gridItem = [[UIBarButtonItem alloc]
+                                        initWithTitle:@"Grid" style:UIBarButtonItemStylePlain
+                                        target:self action:@selector(didFlipGridSwitch:)];
+        UIBarButtonItem *filterItem = [[UIBarButtonItem alloc]
+                                     initWithTitle:@"Filter" style:UIBarButtonItemStylePlain
+                                     target:self action:@selector(didFlipFilterSwitch:)];
+        UIBarButtonItem *photoItem = [[UIBarButtonItem alloc]
+                                     initWithTitle:@"Photo" style:UIBarButtonItemStylePlain
+                                     target:self action:@selector(takePhoto:)];
+        UIBarButtonItem *videoItem = [[UIBarButtonItem alloc]
+                                     initWithTitle:@"Video" style:UIBarButtonItemStylePlain
+                                     target:self action:@selector(toggleRecord:)];
+        UIBarButtonItem *flashItem = [[UIBarButtonItem alloc]
+                                      initWithTitle:@"Flash" style:UIBarButtonItemStylePlain
+                                      target:self action:@selector(didTouchUpInsideFlashModeButton:)];
+        
+        NSArray *buttonItems = @[gridItem, filterItem, photoItem, videoItem, flashItem];
+        
+        _toolBar = [[UIToolbar alloc] initWithFrame:frame];
+        [_toolBar setBarStyle:UIBarStyleBlackOpaque];
+        [_toolBar setItems:buttonItems];
+        
+    }
+    return _toolBar;
 }
 
 -(UIButton *)flashModeButton
@@ -147,7 +193,7 @@ static NSString *const kGridImage = @"ClockGrid.png";
 #pragma mark - Button & Switch Actions
 - (void)didTouchUpInsideFlashModeButton:(id)sender
 {
-    if (sender == self.flashModeButton) {
+    if (sender == self.toolBar.items[kToolBarFlashIndex]) {
         if (self.flashModeToggleActionBlock != nil) {
             BOOL flashOn = [self.camera torchIsOn];
             if (flashOn == YES) {
@@ -162,7 +208,7 @@ static NSString *const kGridImage = @"ClockGrid.png";
 
 -(void)didFlipGridSwitch:(id)sender
 {
-    if (sender == self.gridSwitch) {
+    if (sender == self.toolBar.items[kToolBarGridIndex]) {
         self.gridOn = !self.gridOn;
         
         if (self.gridOn == YES) {
@@ -171,18 +217,33 @@ static NSString *const kGridImage = @"ClockGrid.png";
             [self.grid removeFromSuperview];
             self.grid = nil;
         }
-        /*if (self.gridToggleActionBlock != nil) {
-            self.gridOn = !self.gridOn;
-            self.gridToggleActionBlock(self.gridOn);
-        }*/
     }
 }
 
 -(void)didFlipFilterSwitch:(id)sender
 {
-    if (sender == self.filterSwitch) {
-        if (self.filterToggleActionBlock != nil) {
+    //if (sender == self.filterSwitch) {
+    if (sender == self.toolBar.items[kToolBarFilterIndex]) {
+        if (self.filterToggleActionBlock) {
             self.filterToggleActionBlock();
+        }
+    }
+}
+
+-(void)takePhoto:(id)sender
+{
+    if (sender == self.toolBar.items[kToolBarPhotoIndex]) {
+        if (self.takePhotoActionBlock) {
+            self.takePhotoActionBlock();
+        }
+    }
+}
+
+-(void)toggleRecord:(id)sender
+{
+    if (sender == self.toolBar.items[kToolBarVideoIndex]) {
+        if (self.toggleRecordActionBlock) {
+            self.toggleRecordActionBlock();
         }
     }
 }

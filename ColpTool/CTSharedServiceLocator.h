@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 @class CTCamera;
 @class CTFilterCamera;
+@class CTFileManager;
 
 @interface CTSharedServiceLocator : NSObject
 
@@ -17,5 +18,6 @@
 
 @property (nonatomic, strong, readonly) CTCamera *camera;
 @property (nonatomic, strong, readonly) CTFilterCamera *filterCamera;
+@property (nonatomic, strong, readonly) CTFileManager *fileManager;
 
 @end

@@ -32,6 +32,8 @@
 		6DFDA2F919E7949600F69237 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFDA2F819E7949600F69237 /* AVFoundation.framework */; };
 		6DFDA2FB19E7949C00F69237 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DFDA2FA19E7949C00F69237 /* QuartzCore.framework */; };
 		8B688F3748BF5CAD53CE8CEA /* libPods-ColpTool.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C963026A44D5A8B08E1964A /* libPods-ColpTool.a */; };
+		EAF84DF51ABD0FEA00C8A33D /* NSString+CTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF84DF41ABD0FEA00C8A33D /* NSString+CTAdditions.m */; };
+		EAF84DFB1ABD110600C8A33D /* CTFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF84DFA1ABD110600C8A33D /* CTFileManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,10 @@
 		6DFDA2FA19E7949C00F69237 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7C963026A44D5A8B08E1964A /* libPods-ColpTool.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ColpTool.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C67798CAFA431DF7C4377534 /* Pods-ColpTool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColpTool.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColpTool/Pods-ColpTool.release.xcconfig"; sourceTree = "<group>"; };
+		EAF84DF31ABD0FEA00C8A33D /* NSString+CTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CTAdditions.h"; sourceTree = "<group>"; };
+		EAF84DF41ABD0FEA00C8A33D /* NSString+CTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CTAdditions.m"; sourceTree = "<group>"; };
+		EAF84DF91ABD110600C8A33D /* CTFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFileManager.h; sourceTree = "<group>"; };
+		EAF84DFA1ABD110600C8A33D /* CTFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFileManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +209,10 @@
 				6D1C41B219E667F100F8600C /* Supporting Files */,
 				6D1C41F019E743D000F8600C /* ToDo */,
 				6D1C41F119E743D000F8600C /* TemplateIcon2x.png */,
+				EAF84DF31ABD0FEA00C8A33D /* NSString+CTAdditions.h */,
+				EAF84DF41ABD0FEA00C8A33D /* NSString+CTAdditions.m */,
+				EAF84DF91ABD110600C8A33D /* CTFileManager.h */,
+				EAF84DFA1ABD110600C8A33D /* CTFileManager.m */,
 			);
 			path = ColpTool;
 			sourceTree = "<group>";
@@ -456,11 +466,13 @@
 			files = (
 				6DFDA2D119E788DB00F69237 /* CTFilterCamera.m in Sources */,
 				6D1C41DC19E6680C00F8600C /* CTViewfinderViewController.m in Sources */,
+				EAF84DF51ABD0FEA00C8A33D /* NSString+CTAdditions.m in Sources */,
 				6D1C41DD19E6680C00F8600C /* CTViewfinderView.m in Sources */,
 				6D1C41EA19E731A300F8600C /* CTCamera.m in Sources */,
 				6D1C41B819E667F100F8600C /* AppDelegate.m in Sources */,
 				6D1C41ED19E738B200F8600C /* CTSharedServiceLocator.m in Sources */,
 				6D1C41B519E667F100F8600C /* main.m in Sources */,
+				EAF84DFB1ABD110600C8A33D /* CTFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,4 +12,6 @@
 @property (nonatomic, copy) void (^flashModeToggleActionBlock)();
 @property (nonatomic, copy) void (^gridToggleActionBlock)(BOOL on);
 @property (nonatomic, copy) void (^filterToggleActionBlock)();
+@property (nonatomic, copy) void (^toggleRecordActionBlock)();
+@property (nonatomic, copy) void (^takePhotoActionBlock)();
 @end
