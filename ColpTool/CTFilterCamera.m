@@ -144,8 +144,9 @@
         
         // Save to assets library
         ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
-        
-        [library writeImageDataToSavedPhotosAlbum:processedJPEG metadata:self.stillCamera.currentCaptureMetadata completionBlock:^(NSURL *assetURL, NSError *error2)
+        NSMutableDictionary *newMet = [((NSDictionary*)(self.stillCamera.currentCaptureMetadata)) mutableCopy];
+        [newMet setObject:[NSNumber numberWithInt:0] forKey:@"Orientation"];
+        [library writeImageDataToSavedPhotosAlbum:processedJPEG metadata:newMet completionBlock:^(NSURL *assetURL, NSError *error2)
          {
              if (error2) {
                  NSLog(@"ERROR: the image failed to be written");
@@ -175,6 +176,5 @@
         [self setupStillCamera:self.filterView];
     }
 }
-
 
 @end
