@@ -17,8 +17,6 @@
 @property (nonatomic, strong) GPUImageOutput<GPUImageInput> *filter;
 @property (nonatomic, strong) GPUImageMovieWriter *movieWriter;
 @property (nonatomic, strong) NSString *pathToMovie;
-@property (nonatomic, assign) BOOL videoEnabled;
-@property (nonatomic, strong) GPUImageStillCamera *stillCamera;
 @property (nonatomic, strong) GPUImageView *filterView;
 @end
 

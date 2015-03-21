@@ -125,10 +125,16 @@
 
 - (void)handlePinch:(UIPinchGestureRecognizer *)recognizer
 {
-    AVCaptureDevice *device = self.camera.videoCamera.inputCamera;
+    AVCaptureDevice *device;
+    if (self.camera.videoEnabled) {
+        device = self.camera.videoCamera.inputCamera;
+    } else {
+        device = ((GPUImageVideoCamera *)self.camera.stillCamera).inputCamera;
+    }
+    
     static CGFloat lastScale = 1.0;
     static CGFloat currentScale = 0;
-    CGFloat maxZoom = device.activeFormat.videoMaxZoomFactor;
+    CGFloat maxZoom = 3.0f;//device.activeFormat.videoMaxZoomFactor;
     CGFloat minZoom = 1.0f;
     CGFloat delta = 0.0f;
 
