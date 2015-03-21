@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) GPUImageVideoCamera *videoCamera;
 
+- (void)initializeFilterView:(GPUImageView *)filterView;
 - (void)setupFilterCamera:(GPUImageView *)filterView;
 - (void)setupStillCamera:(GPUImageView *)filterView;
 - (void)toggleTorch;

@@ -36,6 +36,12 @@
     return self;
 }
 
+- (void)initializeFilterView:(GPUImageView *)filterView {
+    self.filterView = filterView;
+    self.filter = [[GPUImageRGBFilter alloc] init];
+    [self.filter addTarget:filterView];
+}
+
 - (void)toggleFilter
 {
     if (self.filterIsOn) {
@@ -79,6 +85,14 @@
     }
 }
 
+- (void)setupStillCamera:(GPUImageView *)filterView
+{
+    self.stillCamera = [[GPUImageStillCamera alloc] init];
+    self.stillCamera.outputImageOrientation = UIDeviceOrientationPortrait;
+    [self.stillCamera addTarget:self.filter];
+    [self.stillCamera startCameraCapture];
+}
+
 - (void)setupFilterCamera:(GPUImageView *)filterView
 {
     self.filterView = filterView;
@@ -87,10 +101,8 @@
     self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     self.videoCamera.horizontallyMirrorFrontFacingCamera = NO;
     self.videoCamera.horizontallyMirrorRearFacingCamera = NO;
-    //self.filter = [[GPUImageRGBFilter alloc] init];
     [self.videoCamera addTarget:self.filter];
     [self setupMovieWriter];
-    //[self.filter addTarget:self.filterView];
     [self.videoCamera startCameraCapture];
 }
 
@@ -103,16 +115,6 @@
     self.movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:pathToMovieURL size:CGSizeMake(480.0, 640.0)];
     self.movieWriter.encodingLiveVideo = YES;
     [self.filter addTarget:self.movieWriter];
-}
-
-- (void)setupStillCamera:(GPUImageView *)filterView
-{
-    self.stillCamera = [[GPUImageStillCamera alloc] init];
-    self.stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
-    self.filter = [[GPUImageRGBFilter alloc] init];
-    [self.stillCamera addTarget:self.filter];
-    [self.filter addTarget:filterView];
-    [self.stillCamera startCameraCapture];
 }
 
 -(void)startRecording

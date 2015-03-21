@@ -49,8 +49,8 @@
     [super viewDidLoad];
     
     self.camera = [CTSharedServiceLocator sharedServiceLocator].filterCamera;
+    [self.camera initializeFilterView:self.filterView];
     [self.camera setupStillCamera:self.filterView];
-
     //[self.camera setupFilterCamera:self.filterView];
     
      CTWeakSelf weakSelf = self;
