@@ -14,4 +14,5 @@
 @property (nonatomic, copy) void (^filterToggleActionBlock)();
 @property (nonatomic, copy) void (^toggleRecordActionBlock)();
 @property (nonatomic, copy) void (^takePhotoActionBlock)();
+@property (nonatomic, copy) void (^toggleVideoActionBlock)(BOOL photoOn);
 @end

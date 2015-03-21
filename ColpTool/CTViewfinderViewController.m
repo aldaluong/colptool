@@ -24,44 +24,40 @@
 
 @implementation CTViewfinderViewController
 
+- (GPUImageView *)filterView
+{
+    if (!_filterView) {
+        _filterView = (GPUImageView *)self.view;
+        _filterView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
+        
+        [self.filterView addSubview:self.cameraViewOverlayView];
+        [self.filterView setBackgroundColorRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    }
+    return _filterView;
+}
+
+- (CTViewfinderView *)cameraViewOverlayView
+{
+    if (!_cameraViewOverlayView) {
+        _cameraViewOverlayView = [[CTViewfinderView alloc] initWithFrame:self.view.bounds];
+    }
+    return _cameraViewOverlayView;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.filterView = (GPUImageView *)self.view;
-    self.filterView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill;
-    self.cameraViewOverlayView = [[CTViewfinderView alloc] initWithFrame:self.view.bounds];
-    [self.filterView addSubview:self.cameraViewOverlayView];
-    [self.filterView setBackgroundColorRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     self.camera = [CTSharedServiceLocator sharedServiceLocator].filterCamera;
-    
-    [self.camera setupFilterCamera:self.filterView];
-    
-    // Record a movie for 10 s and store it in /Documents, visible via iTunes file sharing
-   /* NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
-    unlink([pathToMovie UTF8String]); // If a file already exists, AVAssetWriter won't let you record new frames, so delete the old movie
-    NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
-    movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:movieURL size:CGSizeMake(480.0, 640.0)];
-    [filter addTarget:movieWriter];
-    
-    [videoCamera startCameraCapture];
-    
-    double delayToStartRecording = 0.5;
-    dispatch_time_t startTime = dispatch_time(DISPATCH_TIME_NOW, delayToStartRecording * NSEC_PER_SEC);
-    dispatch_after(startTime, dispatch_get_main_queue(), ^(void){
-        NSLog(@"Start recording");
-    });*/
+    [self.camera setupStillCamera:self.filterView];
+
+    //[self.camera setupFilterCamera:self.filterView];
     
      CTWeakSelf weakSelf = self;
      self.cameraViewOverlayView.flashModeToggleActionBlock = ^() {
          CTStrongSelf strongSelf = weakSelf;
          [strongSelf toggleFlashMode];
      };
-    
-    /*
-     self.cameraViewOverlayView.gridToggleActionBlock = ^(BOOL on) {
-     CTStrongSelf strongSelf = weakSelf;
-     };*/
     
      self.cameraViewOverlayView.filterToggleActionBlock = ^() {
          CTStrongSelf strongSelf = weakSelf;
@@ -71,6 +67,16 @@
     self.cameraViewOverlayView.toggleRecordActionBlock = ^() {
         CTStrongSelf strongSelf = weakSelf;
         [strongSelf toggleRecord];
+    };
+
+    self.cameraViewOverlayView.takePhotoActionBlock = ^() {
+        CTStrongSelf strongSelf = weakSelf;
+        [strongSelf takePhoto];
+    };
+    
+    self.cameraViewOverlayView.toggleVideoActionBlock = ^(BOOL photoEnabled) {
+        CTStrongSelf strongSelf = weakSelf;
+        [strongSelf toggleVideoStatus:photoEnabled];
     };
     
     UIGestureRecognizer *pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
@@ -185,5 +191,9 @@
 
 - (void)takePhoto {
     [self.camera takePhoto];
+}
+
+-(void)toggleVideoStatus:(BOOL)videoEnabled {
+    [self.camera toggleVideoStatus:videoEnabled];
 }
 @end

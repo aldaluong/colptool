@@ -10,14 +10,15 @@
 #import "GPUImage.h"
 #import "CTSharedServiceLocator.h"
 #import "CTFileManager.h"
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface CTFilterCamera()
 
 @property (nonatomic, strong) GPUImageOutput<GPUImageInput> *filter;
 @property (nonatomic, strong) GPUImageMovieWriter *movieWriter;
-@property (nonatomic, assign) BOOL recording;
 @property (nonatomic, strong) NSString *pathToMovie;
-
+@property (nonatomic, assign) BOOL videoEnabled;
+@property (nonatomic, strong) GPUImageStillCamera *stillCamera;
 @property (nonatomic, strong) GPUImageView *filterView;
 @end
 
@@ -30,6 +31,7 @@
         _torchIsOn = NO;
         _filterIsOn = NO;
         _recording = NO;
+        _videoEnabled = YES;
     }
     return self;
 }
@@ -85,13 +87,10 @@
     self.videoCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
     self.videoCamera.horizontallyMirrorFrontFacingCamera = NO;
     self.videoCamera.horizontallyMirrorRearFacingCamera = NO;
-    //self.filter = [[GPUImageFilter alloc] initWithFragmentShaderFromFile:@"CustomShader"];
-    self.filter = [[GPUImageRGBFilter alloc] init];
+    //self.filter = [[GPUImageRGBFilter alloc] init];
     [self.videoCamera addTarget:self.filter];
-
     [self setupMovieWriter];
-    [self.filter addTarget:self.filterView];
-    
+    //[self.filter addTarget:self.filterView];
     [self.videoCamera startCameraCapture];
 }
 
@@ -103,8 +102,17 @@
     NSURL *pathToMovieURL = [NSURL fileURLWithPath:pathToMovie];
     self.movieWriter = [[GPUImageMovieWriter alloc] initWithMovieURL:pathToMovieURL size:CGSizeMake(480.0, 640.0)];
     self.movieWriter.encodingLiveVideo = YES;
-    
     [self.filter addTarget:self.movieWriter];
+}
+
+- (void)setupStillCamera:(GPUImageView *)filterView
+{
+    self.stillCamera = [[GPUImageStillCamera alloc] init];
+    self.stillCamera.outputImageOrientation = UIInterfaceOrientationPortrait;
+    self.filter = [[GPUImageRGBFilter alloc] init];
+    [self.stillCamera addTarget:self.filter];
+    [self.filter addTarget:filterView];
+    [self.stillCamera startCameraCapture];
 }
 
 -(void)startRecording
@@ -132,10 +140,41 @@
 
 -(void)takePhoto
 {
-    
+    [self.stillCamera capturePhotoAsJPEGProcessedUpToFilter:self.filter withCompletionHandler:^(NSData *processedJPEG, NSError *error){
+        
+        // Save to assets library
+        ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+        
+        [library writeImageDataToSavedPhotosAlbum:processedJPEG metadata:self.stillCamera.currentCaptureMetadata completionBlock:^(NSURL *assetURL, NSError *error2)
+         {
+             if (error2) {
+                 NSLog(@"ERROR: the image failed to be written");
+             }
+             else {
+                 NSLog(@"PHOTO SAVED - assetURL: %@", assetURL);
+             }
+             
+             runOnMainQueueWithoutDeadlocking(^{
+             });
+         }];
+    }];
+
 }
 
-
+-(void)toggleVideoStatus:(BOOL)videoEnabled
+{
+    if (self.videoEnabled == videoEnabled) {
+        return;
+    }
+    
+    self.videoEnabled = videoEnabled;
+    
+    if (self.videoEnabled) {
+        [self setupFilterCamera:self.filterView];
+    } else {
+        [self setupStillCamera:self.filterView];
+    }
+}
 
 
 @end

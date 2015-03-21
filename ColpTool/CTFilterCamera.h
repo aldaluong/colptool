@@ -15,12 +15,15 @@
 @property (nonatomic, strong) GPUImageVideoCamera *videoCamera;
 
 - (void)setupFilterCamera:(GPUImageView *)filterView;
+- (void)setupStillCamera:(GPUImageView *)filterView;
 - (void)toggleTorch;
 - (void)toggleFilter;
 - (void)toggleRecord;
 - (void)takePhoto;
+- (void)toggleVideoStatus:(BOOL)videoEnabled;
 
 @property (nonatomic, assign) BOOL torchIsOn;
 @property (nonatomic, assign) BOOL filterIsOn;
+@property (nonatomic, assign) BOOL recording;
 
 @end

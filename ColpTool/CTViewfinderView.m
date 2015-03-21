@@ -14,6 +14,7 @@ static NSString *const kFilterSwitchLabel = @"filter";
 static NSString *const kFlashButtonOffImage = @"flash-off.png";
 static NSString *const kFlashButtonOnImage = @"flash-on.png";
 static NSString *const kGridImage = @"ClockGrid.png";
+static NSString *const kVideoSwitchLabel = @"video";
 
 static const CGFloat kToolBarHeight = 20.0;
 //static const CGFloat kToolBarButtonWidth = 20.0;
@@ -35,6 +36,8 @@ static const NSInteger kToolBarFlashIndex = 4;
 @property (nonatomic, strong) UIButton *flashModeButton;
 @property (nonatomic, strong) UIImageView *grid;
 @property (nonatomic, strong) UIToolbar *toolBar;
+@property (nonatomic, strong) UISwitch *videoSwitch;
+@property (nonatomic, strong) UILabel *videoSwitchLabel;
 @end
 
 @implementation CTViewfinderView
@@ -47,11 +50,18 @@ static const NSInteger kToolBarFlashIndex = 4;
         // Initialization code
         self.camera = [CTSharedServiceLocator sharedServiceLocator].filterCamera;
         self.backgroundColor  = [UIColor clearColor];
-        //[self addSubview:self.gridSwitch];
-        //[self addSubview:self.gridSwitchLabel];
-        //[self addSubview:self.filterSwitch];
-        //[self addSubview:self.filterSwitchLabel];
-        //[self addSubview:self.flashModeButton];
+        
+        /*
+        [self addSubview:self.gridSwitch];
+        [self addSubview:self.gridSwitchLabel];
+        [self addSubview:self.filterSwitch];
+        [self addSubview:self.filterSwitchLabel];
+        [self addSubview:self.flashModeButton];
+        */
+        
+        [self addSubview:self.videoSwitch];
+        [self addSubview:self.videoSwitchLabel];
+        
         [self addSubview:self.toolBar];
         self.gridOn = NO;
     }
@@ -77,7 +87,7 @@ static const NSInteger kToolBarFlashIndex = 4;
                                      initWithTitle:@"Photo" style:UIBarButtonItemStylePlain
                                      target:self action:@selector(takePhoto:)];
         UIBarButtonItem *videoItem = [[UIBarButtonItem alloc]
-                                     initWithTitle:@"Video" style:UIBarButtonItemStylePlain
+                                     initWithTitle:@"Record" style:UIBarButtonItemStylePlain
                                      target:self action:@selector(toggleRecord:)];
         UIBarButtonItem *flashItem = [[UIBarButtonItem alloc]
                                       initWithTitle:@"Flash" style:UIBarButtonItemStylePlain
@@ -190,6 +200,39 @@ static const NSInteger kToolBarFlashIndex = 4;
     return _grid;
 }
 
+-(UISwitch *)videoSwitch
+{
+    if (_videoSwitch == nil) {
+        CGRect frame = (CGRect) {
+            .origin.x = 240.f,
+            .origin.y = 23.f,
+            .size = (CGSize){44.f, 35.f}
+        };
+        
+        _videoSwitch = [[UISwitch alloc] initWithFrame:frame];
+        [_videoSwitch addTarget:self action:@selector(didFlipVideoSwitch:) forControlEvents:UIControlEventValueChanged];
+    }
+    return _videoSwitch;
+}
+
+-(UILabel *)videoSwitchLabel
+{
+    if (_filterSwitchLabel == nil) {
+        CGRect frame = (CGRect) {
+            .origin.x = 247.f,
+            .origin.y = 54.f,
+            .size = (CGSize){40.f, 15.f}
+        };
+        
+        _filterSwitchLabel = [[UILabel alloc] initWithFrame:frame];
+        _filterSwitchLabel.font = [_filterSwitchLabel.font fontWithSize:12.0];
+        _filterSwitchLabel.text = kVideoSwitchLabel;
+        _filterSwitchLabel.textColor = [UIColor blackColor];
+        _filterSwitchLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    return _filterSwitchLabel;
+}
+
 #pragma mark - Button & Switch Actions
 - (void)didTouchUpInsideFlashModeButton:(id)sender
 {
@@ -222,10 +265,18 @@ static const NSInteger kToolBarFlashIndex = 4;
 
 -(void)didFlipFilterSwitch:(id)sender
 {
-    //if (sender == self.filterSwitch) {
     if (sender == self.toolBar.items[kToolBarFilterIndex]) {
         if (self.filterToggleActionBlock) {
             self.filterToggleActionBlock();
+        }
+    }
+}
+
+-(void)didFlipVideoSwitch:(id)sender
+{
+    if (sender == self.videoSwitch) {
+        if (self.toggleVideoActionBlock) {
+            self.toggleVideoActionBlock(self.videoSwitch.on);
         }
     }
 }
@@ -246,6 +297,9 @@ static const NSInteger kToolBarFlashIndex = 4;
             self.toggleRecordActionBlock();
         }
     }
+    
+    NSString *barButtonTitle = self.camera.recording ? @"Recording" : @"Record";
+    ((UIBarButtonItem *)(self.toolBar.items[kToolBarVideoIndex])).title = barButtonTitle;
 }
 
 /*
